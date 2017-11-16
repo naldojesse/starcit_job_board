@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +26,7 @@ SECRET_KEY = '6#+19+tf3uj#@k5nbr940ug#1slttrrkxly%wz2j-@36oq!#!9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -81,6 +82,32 @@ DATABASES = {
     }
 }
 
+# from django.core.exceptions import ImproperlyConfigured
+#
+# def get_env_variable(var_name):
+#     try:
+#         return os.environ[var_name]
+#     except KeyError:
+#         error_msg = "Set the %s environment variable" % var_name
+#         raise ImproperlyConfigured(error_msg)
+
+
+#using mysql for now
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': '~/Career/Projects/starcit_job_board/my.cnf',
+#         },
+#     }
+# }
+
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# SECRET_KEY = config('SECRET_KEY')
+# DEBUG = config('DEBUG', cast=bool)
+# DATABASES = {
+#     'default': dj_database_url.config(default=config('DATABASE_URL'),)
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -106,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -119,3 +146,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
